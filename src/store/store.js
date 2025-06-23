@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import appReducer from "./slices/taskSlice"
+import taskReducer from "./slices/taskSlice"
+import columnReducer from "./slices/columnSlice"
 
 const store = configureStore({
     reducer: {
-        app: appReducer,
+        taskSlice: taskReducer,
+        columnSlice: columnReducer
     }
 })
 export default store;
