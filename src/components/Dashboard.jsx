@@ -19,28 +19,27 @@ const DashBoard = () => {
                 destCol: destination.droppableId,
                 sourceIdx: source.index,
                 destIdx: destination.index
-            }
-            )
-        )
-
+            })
+        );
     }
 
     return (
-        <div className="flex p-10 gap-10 bg-gray-100 dark:bg-gray-800 min-h-[calc(100vh-80px)] transition-colors duration-500 ease-in-out">
-            <DragDropContext onDragEnd={handleDrop}>
-
-                {
-                    cols.map((col) => (
-                        <div key={col.id}>
+        <div className="w-screen h-[calc(100vh-80px)] overflow-x-auto overflow-y-hidden bg-gray-100 dark:bg-gray-800 transition-colors duration-300 scrollbar-hide">
+            <div className="flex h-full w-max gap-6 px-6 py-10 snap-x snap-mandatory">
+                <DragDropContext onDragEnd={handleDrop}>
+                    {cols.map((col) => (
+                        <div key={col.id} className="snap-start shrink-0">
                             <Column colKey={col.id} />
                         </div>
-                    ))
+                    ))}
+                </DragDropContext>
 
-                }
-            </DragDropContext>
-            <AddColumn />
+                <div className="snap-start shrink-0">
+                    <AddColumn />
+                </div>
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export default DashBoard;

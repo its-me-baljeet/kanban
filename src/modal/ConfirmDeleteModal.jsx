@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 
-const ConfirmDeleteModal = ({ onConfirm, onCancel }) => {
+const ConfirmDeleteModal = ({ onConfirm, onCancel, title = "Confirm Delete", message = "Are you sure?" }) => {
     return (
         <AnimatePresence>
             <motion.div
@@ -18,10 +18,8 @@ const ConfirmDeleteModal = ({ onConfirm, onCancel }) => {
                     transition={{ duration: 0.2 }}
                     className="bg-white dark:bg-zinc-800 text-black dark:text-white p-6 rounded-xl max-w-sm w-full shadow-xl"
                 >
-                    <h2 className="text-xl font-semibold mb-4">Delete Task</h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
-                        Are you sure you want to delete this task? This action cannot be undone.
-                    </p>
+                    <h2 className="text-xl font-semibold mb-4">{title}</h2>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">{message}</p>
                     <div className="flex justify-end gap-3">
                         <button
                             onClick={onCancel}

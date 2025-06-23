@@ -7,7 +7,7 @@ const AddColumn = () => {
     return (
         <div
             className="
-                w-64 flex justify-center items-center max-h-[calc(100vh-200px)] 
+                w-64 flex justify-center items-center h-[calc(100vh-200px)] 
                 bg-gradient-to-b from-gray-300 via-gray-200 to-gray-100 
                 dark:from-gray-700 dark:via-gray-750 dark:to-gray-800 
                 mt-10 rounded-lg cursor-pointer 

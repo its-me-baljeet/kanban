@@ -54,7 +54,7 @@ const AddColumnModal = ({ setIsOpen }) => {
                     <button
                         onClick={() => setIsOpen(false)}
                         className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 
-            text-black dark:text-white rounded-md px-4 py-2 transition-colors duration-200"
+                        text-black dark:text-white rounded-md px-4 py-2 transition-colors duration-200"
                     >
                         Cancel
                     </button>
