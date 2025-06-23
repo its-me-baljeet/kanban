@@ -1,6 +1,9 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { loadState } from "../../services/localStorageHelpers";
 
-const initialState = {
+const savedData = loadState("columnState");
+
+const initialState = savedData || {
     columns: [
         { id: nanoid(), name: "Todo", color: "#3b82f6" },
         { id: nanoid(), name: "In Progress", color: "#facc15" },

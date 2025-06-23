@@ -1,6 +1,8 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { loadState } from "../../services/localStorageHelpers";
 
-const initialState = {
+const savedData = loadState("taskState");
+const initialState = savedData || {
     tasks: [],
 };
 
