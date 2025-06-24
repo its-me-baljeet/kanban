@@ -16,7 +16,7 @@ const ConfirmDeleteModal = ({ onConfirm, onCancel, title = "Confirm Delete", mes
                     animate={{ scale: 1 }}
                     exit={{ scale: 0.9 }}
                     transition={{ duration: 0.2 }}
-                    className="bg-white dark:bg-zinc-800 text-black dark:text-white p-6 rounded-xl max-w-sm w-full shadow-xl"
+                    className="bg-white dark:bg-gray-800 text-black dark:text-white p-6 rounded-xl max-w-sm w-full shadow-xl"
                 >
                     <h2 className="text-xl font-semibold mb-4">{title}</h2>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">{message}</p>

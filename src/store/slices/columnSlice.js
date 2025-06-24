@@ -18,7 +18,8 @@ const columnSlice = createSlice({
     reducers: {
         addColumn: (state, action) => {
             const { name, color } = action.payload;
-            const exists = state.columns.some(col => col.name === name);
+            const exists = state.columns.some(col => col.name.toLowerCase() === name.toLowerCase());
+
             if (!exists) {
                 state.columns.push({ id: nanoid(), name, color: color || "#d1d5db" });
             }

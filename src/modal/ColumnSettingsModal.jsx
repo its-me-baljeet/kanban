@@ -41,7 +41,7 @@ const ColumnSettingsModal = ({ columnKey, currentColor, onClose }) => {
         >
             <div
                 onClick={(e) => e.stopPropagation()}
-                className="w-11/12 max-w-md bg-white dark:bg-gray-900 text-black dark:text-white 
+                className="w-11/12 max-w-md bg-white dark:bg-gray-800 text-black dark:text-white 
                 rounded-xl p-6 shadow-2xl transition-all duration-300 border border-gray-300 dark:border-gray-700"
             >
                 <h2 className="text-xl font-bold mb-4">Edit Column</h2>

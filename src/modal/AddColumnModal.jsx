@@ -1,15 +1,26 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addColumn } from "../store/slices/columnSlice";
 
 const AddColumnModal = ({ setIsOpen }) => {
     const dispatch = useDispatch();
+    const columns = useSelector(state => state.columnSlice.columns); // Get columns
+
     const [input, setInput] = useState("");
     const [color, setColor] = useState("#ffffff");
+    const [error, setError] = useState("");
 
     function handleAdd() {
-        if (!input.trim()) return;
-        dispatch(addColumn({ name: input.toUpperCase(), color }));
+        const trimmed = input.trim().toUpperCase();
+        if (!trimmed) return;
+
+        const exists = columns.some(col => col.name.toLowerCase() === trimmed.toLowerCase());
+        if (exists) {
+            setError("Column with this name already exists.");
+            return;
+        }
+
+        dispatch(addColumn({ name: trimmed, color }));
         setIsOpen(false);
     }
 
@@ -19,7 +30,7 @@ const AddColumnModal = ({ setIsOpen }) => {
             onClick={() => setIsOpen(false)}
         >
             <div
-                className="w-11/12 max-w-md bg-white dark:bg-gray-900 text-black dark:text-white 
+                className="w-11/12 max-w-md bg-white dark:bg-gray-800 text-black dark:text-white 
         rounded-xl p-6 shadow-2xl transition-all duration-300 border border-gray-300 dark:border-gray-700"
                 onClick={(e) => e.stopPropagation()}
             >
@@ -33,11 +44,19 @@ const AddColumnModal = ({ setIsOpen }) => {
                         if (e.key === "Enter") handleAdd();
                     }}
                     className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md 
-          bg-white dark:bg-gray-800 text-black dark:text-white 
+          bg-white dark:bg-gray-700 text-black dark:text-white 
           focus:outline-none focus:ring-2 focus:ring-purple-600
           transition-all duration-300 mb-4"
                     placeholder="Enter Column Title..."
-                />
+                />{error && (
+                    <p className="text-sm text-red-500 mb-2" onChange={(e) => {
+                        setInput(e.target.value);
+                        setError(""); // clear error
+                    }}
+
+                    >{error}</p>
+                )}
+
 
                 {/* Color Picker Styled */}
                 <label className="flex items-center gap-3 mb-6">

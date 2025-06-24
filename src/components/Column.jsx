@@ -56,7 +56,7 @@ const Column = ({ colKey }) => {
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                             className={`
-                                flex flex-col gap-3 p-3 w-64 rounded-md transition-all duration-300
+                                flex flex-col gap-3 w-64 rounded-md transition-all duration-300
                                 h-full overflow-y-auto overflow-x-hidden
                                 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 
                                 scrollbar-track-transparent hover:scrollbar-thumb-gray-400 dark:hover:scrollbar-thumb-gray-500

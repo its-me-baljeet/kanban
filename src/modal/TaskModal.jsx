@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
 import { deleteTask, editTask } from "../store/slices/taskSlice";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import { FaRegEdit } from "react-icons/fa";
+
 
 const TaskModal = ({ setIsOpen, task }) => {
     const dispatch = useDispatch();
@@ -50,10 +52,10 @@ const TaskModal = ({ setIsOpen, task }) => {
                             {mode === "view" ? "Task Details" : "Edit Task"}
                         </h2>
                         <button
-                            className="text-sm text-purple-600 hover:underline"
+                            className="text-gray-900 dark:text-gray-100 cursor-pointer hover:text-gray-600 dark:hover:text-gray-300 transition-colors flex-shrink-0"
                             onClick={() => setMode(mode === "view" ? "edit" : "view")}
                         >
-                            {mode === "view" ? "Edit" : "Cancel"}
+                            {mode === "view" ? <FaRegEdit size={"20px"} /> : "Cancel"}
                         </button>
                     </div>
                     <hr className="border-gray-300 dark:border-gray-600 my-2" />
@@ -116,6 +118,13 @@ const TaskModal = ({ setIsOpen, task }) => {
                     )}
 
                     <div className="flex justify-end gap-3 mt-6">
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 
+                        text-black dark:text-white rounded-md px-4 py-2 transition-colors duration-200"
+                        >
+                            Close
+                        </button>
                         {mode === "edit" ? (
                             <button
                                 onClick={handleSave}
@@ -126,19 +135,12 @@ const TaskModal = ({ setIsOpen, task }) => {
                         ) : (
                             <button
                                 onClick={handleDelete}
-                                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-colors"
+                                className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md transition-colors"
                             >
                                 Delete
                             </button>
                         )}
                     </div>
-                    <button
-                        onClick={() => setIsOpen(false)}
-                        className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 
-                        text-black dark:text-white rounded-md px-4 py-2 transition-colors duration-200"
-                    >
-                        Close
-                    </button>
                 </motion.div>
 
                 {showConfirm && (

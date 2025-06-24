@@ -22,13 +22,15 @@ const AddTaskModal = ({ setIsOpen }) => {
 
     return (
         <div
-            className="fixed top-0 left-0 h-screen w-full flex justify-center items-center bg-black/40"
+            className="fixed top-0 left-0 h-screen w-full flex justify-center items-center bg-black/40 z-20"
             onClick={() => setIsOpen(false)}
         >
             <div
                 className="w-96 bg-white dark:bg-gray-800 rounded-md p-6 flex flex-col gap-5 shadow-lg"
                 onClick={e => e.stopPropagation()}
             >
+                <h1 className="text-2xl font-semibold text-black dark:text-white transition-colors duration-300">Add Task Details</h1>
+
                 <input
                     type="text"
                     value={title}
